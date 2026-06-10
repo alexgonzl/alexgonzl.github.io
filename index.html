@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Gonzalez, PhD — Research Engineer & Computational Physiologist</title>
+<meta name="description" content="Alex Gonzalez, PhD. Research engineer and computational physiologist working at the intersection of domain science and machine learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1118;
+    --bg-soft: #101824;
+    --card: #131d2b;
+    --border: #1f2d40;
+    --text: #dbe4f0;
+    --muted: #8da2bb;
+    --accent: #45d6c3;
+    --accent-dim: rgba(69, 214, 195, 0.12);
+    --gold: #e8b756;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Inter", -apple-system, sans-serif; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #08251f; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 17, 24, 0.82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  nav .logo { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--text); letter-spacing: 0.5px; }
+  nav .logo b { color: var(--accent); }
+  nav .links a { color: var(--muted); font-size: 13.5px; margin-left: 22px; font-weight: 500; }
+  nav .links a:hover { color: var(--accent); text-decoration: none; }
+
+  /* hero */
+  header { padding: 88px 0 36px; position: relative; overflow: hidden; }
+  .kicker {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px;
+  }
+  h1 {
+    font-family: "Fraunces", serif; font-weight: 300; font-size: clamp(42px, 7vw, 68px);
+    line-height: 1.05; margin: 0 0 14px; color: #f2f6fb;
+  }
+  h1 b { font-weight: 600; }
+  .tagline { font-size: 18px; color: var(--muted); max-width: 620px; margin: 0 0 26px; }
+  .tagline em { color: var(--text); font-style: normal; font-weight: 500; }
+  .hero-cta a.btn {
+    display: inline-block; border: 1px solid var(--accent); color: var(--accent);
+    padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; margin-right: 12px;
+    transition: all .2s;
+  }
+  .hero-cta a.btn:hover { background: var(--accent); color: #08251f; text-decoration: none; }
+  .hero-cta a.btn.solid { background: var(--accent); color: #08251f; }
+  .hero-cta a.btn.solid:hover { filter: brightness(1.1); }
+
+  /* signal strip */
+  .signal { margin: 44px 0 0; opacity: 0.9; }
+  .signal svg { width: 100%; height: 90px; display: block; }
+  .signal .raw { stroke: #2a3a52; stroke-width: 1.5; fill: none; }
+  .signal .fit {
+    stroke: var(--accent); stroke-width: 2; fill: none;
+    stroke-dasharray: 3000; stroke-dashoffset: 3000;
+    animation: draw 5s ease-out forwards;
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .signal .caption {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; color: #57708f; margin-top: 6px;
+  }
+
+  /* sections */
+  section { padding: 64px 0 8px; }
+  h2 {
+    font-family: "Fraunces", serif; font-weight: 500; font-size: 30px; margin: 0 0 6px; color: #f2f6fb;
+  }
+  .h2-sub { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 22px; }
+  .prose p { margin: 0 0 16px; max-width: 760px; }
+  .prose .pull { color: var(--muted); border-left: 2px solid var(--accent); padding-left: 16px; }
+
+  /* cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 10px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 20px 16px; transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card h3 { margin: 0 0 8px; font-size: 15.5px; font-weight: 600; color: #eef3f9; }
+  .card p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+  .card .tag { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+
+  /* publications */
+  .pubyear {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--gold);
+    margin: 30px 0 12px; letter-spacing: 1px;
+  }
+  .pub {
+    border-left: 2px solid var(--border); padding: 2px 0 2px 18px; margin-bottom: 18px;
+    transition: border-color .2s;
+  }
+  .pub:hover { border-color: var(--accent); }
+  .pub.selected { border-color: var(--gold); background: linear-gradient(90deg, rgba(232,183,86,0.06), transparent 60%); border-radius: 0 8px 8px 0; padding-top: 10px; padding-bottom: 10px; }
+  .pub .t { font-weight: 600; font-size: 15.5px; color: #eef3f9; }
+  .pub .a { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+  .pub .a u { text-decoration: none; color: var(--text); font-weight: 500; }
+  .pub .v { font-size: 13px; color: #57708f; font-style: italic; margin-top: 2px; }
+  .pub .links { margin-top: 8px; }
+  .pub .links a {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 1px;
+    border: 1px solid var(--border); color: var(--accent); border-radius: 6px;
+    padding: 3px 10px; margin-right: 8px; text-transform: uppercase; transition: all .2s;
+  }
+  .pub .links a:hover { border-color: var(--accent); background: var(--accent-dim); text-decoration: none; }
+  .badge { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--gold); border: 1px solid rgba(232,183,86,.4); border-radius: 5px; padding: 1px 7px; letter-spacing: 1px; vertical-align: 2px; margin-left: 8px; }
+
+  /* footer / contact */
+  footer { margin-top: 70px; border-top: 1px solid var(--border); padding: 44px 0 60px; }
+  footer .row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
+  footer .row a {
+    border: 1px solid var(--border); border-radius: 10px; padding: 10px 18px;
+    color: var(--text); font-size: 14px; font-weight: 500; transition: all .2s;
+  }
+  footer .row a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  footer .fine { color: #57708f; font-size: 12.5px; margin-top: 34px; font-family: "JetBrains Mono", monospace; }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    nav .links a { margin-left: 14px; font-size: 12.5px; }
+    header { padding-top: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="logo"><b>~/</b>alexgonzl</span>
+    <span class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="assets/resume.pdf">CV</a>
+    </span>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">Research Engineer · Computational Physiologist</div>
+    <h1>Alex <b>Gonzalez</b>, PhD</h1>
+    <p class="tagline">Rigorous inference from noisy biological data: <em>large-scale wearables, medical devices, and human neuroscience</em>, at the intersection of domain science and machine learning.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#publications">Publications</a>
+      <a class="btn" href="assets/resume.pdf">Download CV</a>
+    </div>
+    <div class="signal">
+      <svg viewBox="0 0 880 90" preserveAspectRatio="none" aria-hidden="true">
+        <path class="raw" id="raw"></path>
+        <path class="fit" id="fit"></path>
+      </svg>
+      <div class="caption">// signal in, structure out</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about" class="reveal">
+    <div class="h2-sub">01 / About</div>
+    <h2>Signal, not noise</h2>
+    <div class="prose">
+      <p>I'm currently at the <a href="https://humanperformance.stanford.edu/">Wu Tsai Human Performance Alliance</a> at Stanford, where I build individual-level models of physiological adaptation from longitudinal wearable and training data, and lead a cohort-scale study on menstrual cycle physiology and sleep.</p>
+      <p>My background includes a PhD in Electrical Engineering from Stanford, postdoctoral work on hippocampal and parahippocampal circuits in rodents, and signal processing consulting for FDA-regulated cardiac devices.</p>
+      <p class="pull">I care deeply about methodological soundness, and tend to reach for the right tool over the fast one.</p>
+    </div>
+  </section>
+
+  <section id="research" class="reveal">
+    <div class="h2-sub">02 / Research Areas</div>
+    <h2>What I work on</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Performance</span>
+        <h3>Physiological adaptation &amp; performance</h3>
+        <p>Modeling training responses, injury risk, and recovery from longitudinal wearable data; investigating injury mechanisms in elite athletes from biomechanics and historical load data.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Physiology</span>
+        <h3>Menstrual cycle biology</h3>
+        <p>Cohort-scale normative physiology, sleep, and cycle variability from wearable biometrics (npj Digital Medicine, 2026).</p>
+      </div>
+      <div class="card">
+        <span class="tag">Neuroscience</span>
+        <h3>Neural coding &amp; memory</h3>
+        <p>How hippocampal and parahippocampal circuits represent space and experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="expertise" class="reveal">
+    <div class="h2-sub">03 / Technical Expertise</div>
+    <h2>Toolbox</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Causal inference</span>
+        <p>Natural experiments, state-space models, and double-robust ML on longitudinal biomedical data.</p>
+      </div>
+      <div class="card">
+        <span class="tag">ML for biology</span>
+        <p>Encoder models, custom architectures, and hypothesis-driven model design for biological signals.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Signal processing</span>
+        <p>Multi-modal biomedical signals, adaptive filtering, and real-time event detection.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Decoding</span>
+        <p>Representational similarity analyses, population-level decoders, single-unit and intracranial EEG.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Agentic AI</span>
+        <p>Agentic AI workflows applied to scientific research.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" class="reveal">
+    <div class="h2-sub">04 / Publications</div>
+    <h2>Selected work</h2>
+
+    <div class="pubyear">2026 · preprints</div>
+    <div class="pub">
+      <div class="t">Structured navigation in a goal-directed task reveals flexible spatial coding</div>
+      <div class="a">Fisher, T., Sosa, M., <u>Gonzalez, A.</u>, Cheng, X., Giocomo, L.</div>
+      <div class="v">Under review</div>
+    </div>
+    <div class="pub">
+      <div class="t">Hippocampal patterns and associative memory: Distinct intracranial EEG temporal encoding patterns support memory</div>
+      <div class="a">Xue, A.M., et al.</div>
+      <div class="v">bioRxiv, 2026</div>
+    </div>
+
+    <div class="pubyear">2026</div>
+    <div class="pub selected">
+      <div class="t">The menstrual cycle through the lens of a wearable device: insights into physiology, sleep, and cycle variability<span class="badge">Selected</span></div>
+      <div class="a"><u>Gonzalez, A.</u>, O'Day, J.J., Johnson, S.C., Kim, J., Jasinski, S.R., Holmes, K.E., Delp, S.L., Hicks, J.L.</div>
+      <div class="v">npj Digital Medicine</div>
+      <div class="links">
+        <a href="https://doi.org/10.1038/s41746-026-02799-9">Paper</a>
+        <a href="https://github.com/alexgonzl/menstrual_cycle_physiology_sleep_whoop">Code</a>
+        <a href="https://alexgonzl.github.io/menstrual_cycle_physiology_sleep_whoop/">Website</a>
+      </div>
+    </div>
+
+    <div class="pubyear">2024</div>
+    <div class="pub">
+      <div class="t">Parahippocampal neurons encode task-relevant information for goal-directed navigation</div>
+      <div class="a"><u>Gonzalez, A.</u>, Giocomo, L.</div>
+      <div class="v">eLife</div>
+    </div>
+    <div class="pub">
+      <div class="t">NeuroRoots, a bio-inspired seamless brain-machine interface for long-term recording in delicate brain regions</div>
+      <div class="a">Ferro, M.D., Proctor, C.M., <u>Gonzalez, A.</u>, et al.</div>
+      <div class="v">AIP Advances</div>
+    </div>
+
+    <div class="pubyear">2022</div>
+    <div class="pub">
+      <div class="t">From Rats to Humans: how novel behavioral paradigms and reinforcement learning can bridge the gap in translation</div>
+      <div class="a"><u>Gonzalez, A.</u>, Giocomo, L.</div>
+      <div class="v">Lab Animal</div>
+    </div>
+    <div class="pub">
+      <div class="t">Neuromatch Academy: a 3-week, online summer school in computational neuroscience</div>
+      <div class="a">'t Hart, B.M., et al.</div>
+      <div class="v">Journal of Open Source Education</div>
+    </div>
+
+    <div class="pubyear">2015</div>
+    <div class="pub">
+      <div class="t">Electrocorticography reveals the temporal dynamics of posterior parietal cortical activity during recognition memory decisions</div>
+      <div class="a"><u>Gonzalez, A.</u>, et al.</div>
+      <div class="v">Proceedings of the National Academy of Sciences</div>
+    </div>
+    <div class="pub">
+      <div class="t">Teaching Digital Signal Processing with Stanford's Lab-in-a-Box</div>
+      <div class="a">Mujica, F.A., Esposito, W.J., <u>Gonzalez, A.</u>, et al.</div>
+      <div class="v">IEEE Signal Processing Education</div>
+    </div>
+
+    <div class="pubyear">2011</div>
+    <div class="pub">
+      <div class="t">Integrated strain array for cellular mechanobiology studies</div>
+      <div class="a">Simmons, C.S., Sim, J.Y., Baechtold, P., <u>Gonzalez, A.</u>, et al.</div>
+      <div class="v">Journal of Micromechanics and Microengineering</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="h2-sub">05 / Contact</div>
+    <h2>Get in touch</h2>
+    <div class="row">
+      <a href="mailto:alx.gnz@gmail.com">Email</a>
+      <a href="https://github.com/alexgonzl">GitHub</a>
+      <a href="https://profiles.stanford.edu/alex-gonzalez">Stanford Profile</a>
+      <a href="assets/resume.pdf">CV (PDF)</a>
+    </div>
+    <div class="fine">© 2026 Alex Gonzalez · hand-rolled static page, no framework</div>
+  </div>
+</footer>
+
+<script>
+  // raw noisy signal + smooth fit, same latent curve
+  (function () {
+    const W = 880, H = 90, N = 440;
+    const latent = x => {
+      // ECG-ish latent: baseline + slow wave + spikes
+      const t = x / W * 4 * Math.PI;
+      let y = Math.sin(t) * 8 + Math.sin(t * 0.5) * 6;
+      const beat = (x % 220) / 220;
+      if (beat > 0.45 && beat < 0.5) y -= 28 * Math.sin((beat - 0.45) / 0.05 * Math.PI);
+      return y;
+    };
+    let raw = "M", fit = "M";
+    let seed = 42;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647 - 0.5;
+    for (let i = 0; i <= N; i++) {
+      const x = i / N * W;
+      const y = latent(x);
+      raw += `${x.toFixed(1)},${(45 + y + rnd() * 14).toFixed(1)} `;
+      fit += `${x.toFixed(1)},${(45 + y).toFixed(1)} `;
+    }
+    document.getElementById("raw").setAttribute("d", raw);
+    document.getElementById("fit").setAttribute("d", fit);
+  })();
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.08 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
