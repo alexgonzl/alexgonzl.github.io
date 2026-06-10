@@ -144,6 +144,7 @@
   .card h3 { margin: 0 0 8px; font-size: 15.5px; font-weight: 600; color: #eef3f9; }
   .card p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
   .card .tag { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+  .card .ex { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--muted); margin-top: 10px; }
 
   /* publications */
   .pubyear {
@@ -282,23 +283,27 @@
     <div class="grid">
       <div class="card">
         <span class="tag">Causal inference</span>
-        <p>Natural experiments, state-space models, and double-robust ML on longitudinal biomedical data.</p>
+        <p>Wearable data is observational, unbalanced, and missing nights. Natural experiments, state-space models, and double-robust ML pull causal answers out of it anyway.</p>
+        <p class="ex">Example: <a href="https://github.com/alexgonzl/menstrual_cycle_physiology_sleep_whoop/blob/main/notebooks/05_sleep_phase_natural_experiment.ipynb">sleep-phase natural experiment</a></p>
       </div>
       <div class="card">
         <span class="tag">ML for biology</span>
-        <p>Encoder models, custom architectures, and hypothesis-driven model design for biological signals.</p>
+        <p>Off-the-shelf architectures rarely match biological questions. I design encoder models and custom architectures where the hypothesis is built into the model itself.</p>
+        <p class="ex">Example: <a href="https://doi.org/10.7554/eLife.85646">eLife 2024</a> · <a href="https://github.com/alexgonzl/TMA/blob/master/Notebooks/enco_deco_paper_plots_stats.ipynb">encoder-decoder notebook</a></p>
       </div>
       <div class="card">
         <span class="tag">Signal processing</span>
-        <p>Multi-modal biomedical signals, adaptive filtering, and real-time event detection.</p>
+        <p>Biological signals bury structure under artifact. Adaptive filtering, multi-band decomposition, and real-time event detection, from EEG-fMRI to an FDA-regulated wearable defibrillator.</p>
+        <p class="ex">Example: <a href="https://github.com/alexgonzl/eegfmri">EEG-fMRI preprocessing code</a></p>
       </div>
       <div class="card">
         <span class="tag">Decoding</span>
-        <p>Representational similarity analyses, population-level decoders, single-unit and intracranial EEG.</p>
+        <p>What does a population of neurons know, and when? Representational similarity analyses and population-level decoders, from single units to intracranial EEG.</p>
+        <p class="ex">Example: <a href="https://doi.org/10.1073/pnas.1510749112">PNAS 2015</a> · <a href="https://doi.org/10.7554/eLife.85646">eLife 2024</a></p>
       </div>
       <div class="card">
         <span class="tag">Agentic AI</span>
-        <p>AI-assisted research codebases: ADR-governed modeling repos with codified assumption-surfacing rules, milestone plans, and subagent hierarchies for parallel scientific-review perspectives.</p>
+        <p>AI agents are only as rigorous as the structure around them. I build ADR-governed research repos with codified assumption surfacing and parallel subagent review.</p>
       </div>
     </div>
   </section>
@@ -432,6 +437,14 @@
     <div class="honor"><span class="n">NIH Biotechnology Training Grant</span></div>
     <div class="honor"><span class="n">Alfred P. Sloan PhD Graduate Fellowship</span></div>
     <div class="honor"><span class="n">NSF Graduate Research Fellowship</span></div>
+  </section>
+
+  <section id="personal" class="reveal">
+    <div class="h2-sub">07 / Off the clock</div>
+    <h2>Meanwhile</h2>
+    <div class="prose">
+      <p>While my Claude Code sessions run, you might find me on a run of my own, cycling up the Santa Cruz Mountains, homebrewing beer, working a pizza dough, or chasing two little ones.</p>
+    </div>
   </section>
 
 </main>
